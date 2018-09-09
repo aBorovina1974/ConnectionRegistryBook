@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="516f2e3b-f542-444e-beba-70666f0b7fdc">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Style_a" scaleImage="RetainShape" fontName="ReportFontExtension" fontSize="12">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$P{connectionPurpose}.equals("stambena građevina")]]></conditionExpression>
+			<style mode="Transparent" fontName="ReportFontExtension" isBold="true" isUnderline="true">
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+			</style>
+		</conditionalStyle>
+	</style>
+	<style name="Style_b" fontName="ReportFontExtension" fontSize="12">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$P{connectionPurpose}.equals("poslovna građevina")]]></conditionExpression>
+			<style fontName="ReportFontExtension" fontSize="12" isBold="true" isUnderline="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="Style_c" fontName="ReportFontExtension" fontSize="12">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$P{connectionPurpose}.equals("poljoprivredna građevina")]]></conditionExpression>
+			<style fontName="ReportFontExtension" isBold="true" isUnderline="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="Style_d" fontName="ReportFontExtension" fontSize="12">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$P{connectionPurpose}.equals("građevno zemljište")]]></conditionExpression>
+			<style fontName="ReportFontExtension" isBold="true" isUnderline="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="Style_e" fontName="ReportFontExtension" fontSize="12">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$P{connectionPurpose}.equals("poljoprivredno zemljište")]]></conditionExpression>
+			<style fontName="ReportFontExtension" isBold="true" isUnderline="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="Style1" fontName="ReportFontExtension" fontSize="12">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$P{requestPurpose}.equals("odvodnja") || $P{requestPurpose}.equals("vodoopskrba i odvodnja")]]></conditionExpression>
+			<style fontName="ReportFontExtension" isBold="true" isUnderline="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="Style2" fontName="ReportFontExtension" fontSize="12">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$P{requestPurpose}.equals("vodoopskrba") || $P{requestPurpose}.equals("vodoopskrba i odvodnja")]]></conditionExpression>
+			<style fontName="ReportFontExtension" isBold="true" isUnderline="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="Style3" fontName="ReportFontExtension" fontSize="12">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$P{connectionCategory}.equals("stalni priključak")]]></conditionExpression>
+			<style fontName="ReportFontExtension" isBold="false" isUnderline="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="Style4" fontName="ReportFontExtension" fontSize="12">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$P{connectionCategory}.equals("privremeni priključak")]]></conditionExpression>
+			<style isBold="false" isUnderline="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="Style5" fontName="ReportFontExtension" fontSize="12">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$P{connectionCategory}.equals("priključak s ograničenim korištenjem")]]></conditionExpression>
+			<style fontName="ReportFontExtension" isBold="false" isUnderline="true"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="Dataset1" uuid="db44675e-5ff5-4e5f-b132-8fab12959758">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="connectionPurpose" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="requestPurpose" class="java.lang.String"/>
+	<parameter name="connectionCategory" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="fullName" class="java.lang.String"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="oib" class="java.lang.String"/>
+	<field name="phone" class="java.lang.String"/>
+	<field name="cadastralParcelNo" class="java.lang.String"/>
+	<field name="settlementArea" class="java.lang.String"/>
+	<field name="cadastralMunicipality" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="51" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="90" height="41" uuid="7f44e2c4-87c0-428b-9f01-4d31eff82caf"/>
+				<imageExpression><![CDATA["C:/Users/Ante/Desktop/Vodovod.PNG"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="100" y="10" width="301" height="41" uuid="f46ec31c-92ae-47dc-b41d-4c7241763e6a"/>
+				<textElement textAlignment="Center">
+					<font fontName="ReportFontExtension" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ZAHTJEV ZA PRIKLJUČENJE NA KOMUNALNE
+VODNE GRAĐEVINE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="740" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="130" height="29" uuid="63a41181-7d5d-4edb-8259-ed8431048929"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="14" isBold="false" isItalic="true" isUnderline="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Podnositelj zahtjeva]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="140" height="19" uuid="5a673bb1-47e3-44d3-bede-3d2698de9d10"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="12" isItalic="true" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[(Ime, prezime i nadimak)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="ElementGroupBottom" x="0" y="80" width="110" height="20" uuid="082fe89c-b452-49b1-a5aa-fd529519b85e"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement markup="none">
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+					<paragraph lineSpacing="Fixed"/>
+				</textElement>
+				<text><![CDATA[(Adresa stanovanja)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="ContainerHeight" x="20" y="120" width="30" height="19" uuid="a98e8143-0f00-496b-aca5-abcaccf38168"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(OIB)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="160" width="100" height="21" uuid="0155cbbd-49a5-4a0d-8eaf-68fcc2478e71"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(Telefon / mobitel)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="201" width="280" height="21" uuid="367862cf-6a70-450d-b7ea-9b33e7a1d3a0"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="14" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Molim naslov da odobri izradu priključka na:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Style1" x="0" y="241" width="110" height="21" uuid="850ff024-8a86-43c3-97fe-20e2fa99454c"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[1) javnu odvodnju]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Style2" x="340" y="239" width="130" height="21" uuid="ac4fd0b0-833c-4d6f-b7f4-a18a3ebd0232"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[2) javnu vodoopskrbu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="262" width="150" height="21" uuid="7f57676c-78bf-4f36-9d12-b7d5908c4148"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="14" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Priključak se izvodi za:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="349" width="211" height="21" uuid="b55da27f-e069-45ff-9fa9-e78400aeb7f8"/>
+				<textElement markup="html">
+					<font fontName="ReportFontExtension" size="14" isBold="false" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Podaci o mjestu priključenja:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="379" width="141" height="21" uuid="2a663707-66e8-4afa-a145-a2531cd0a22c"/>
+				<textElement>
+					<font fontName="SansSerif" size="14" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Adresa priključka]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="400" width="30" height="19" uuid="0ef08db2-5a29-453b-b8e3-2aaebaa97431"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[K.č:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="ElementGroupHeight" x="200" y="400" width="30" height="19" uuid="a8de4dd4-9bbc-4f8f-aadd-663c387d5d0b"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[K.O.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="ElementGroupHeight" x="390" y="400" width="46" height="19" uuid="539f80c8-8cf9-463e-8341-5e61d58e21fc"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Predio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="419" width="401" height="20" uuid="e6cd6c93-6f1d-4730-b320-ec2d9c29c41a"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="14" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Priključak na komunalne vodne građevine odobrava se kao:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Style3" x="0" y="449" width="481" height="20" uuid="803cd612-0c07-4a5e-9fb5-0f863bba4c3a"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[a) STALNI PRIKLJUČAK - privremeno rješenje vodoopskrbe/odvodnje]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Style4" x="0" y="469" width="560" height="36" uuid="83aadfad-412b-41d4-b6cf-0ad78c9a688e"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[b) PRIVREMENI PRIKLJUČAK - privremeno rješenje vodoopskrbe/odvodnje do stjecanja uvjeta za trajno rješenje]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Style5" x="0" y="505" width="560" height="35" uuid="a262f6bc-20b4-41e4-853f-a79451ce3dbf"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[c)PRIKLJUČAK S OGRANIČENIM KORIŠTENJEM - uvjetna mogućnost korištenja vode, u  uvjetima nestašice vode ograničava se ili uskraćuje isporuka vode iz javnog vodovoda (poljoprivredno zemljište)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="719" width="161" height="21" uuid="353a1a52-6fcb-4918-a20d-35112ef84447"/>
+				<textElement>
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Podnositelj zahtjeva]]></text>
+			</staticText>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="60" width="380" height="19" uuid="3441ccbc-a9c8-47c2-9f55-8835096a32ec"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="100" width="380" height="20" uuid="2ae3d232-65fd-43d5-9ffe-5a8e026e68cb"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="139" width="180" height="19" uuid="56ae9bce-e3b6-4cca-bb31-fae7e80a6c7c"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{oib}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="178" width="230" height="19" uuid="13a9becf-9803-4fea-8f4f-5723c113d550"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{phone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="400" width="160" height="19" uuid="47b52319-4751-46a9-ae85-1afb440366ee"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cadastralParcelNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="ElementGroupHeight" x="436" y="400" width="115" height="19" uuid="4e3cb4f7-f0eb-4d72-9ed4-6c635f23d04f"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{settlementArea}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="ElementGroupHeight" x="230" y="400" width="160" height="19" uuid="51365931-65b6-47b1-82c7-f670a6ff8262"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cadastralMunicipality}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="549" width="551" height="181" uuid="af99e76e-dd31-46f8-99e6-e639dd8bed7b"/>
+				<textElement markup="styled">
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Prilozi:
+       •    Građevinska dozvola, Rješenje o uvjetima gradnje, Potvrda glavnog projekta, Potvrda
+             nadležnog organa (katastar) da se radi o objektu sagrađenom prije 15. veljače 1968. godine -
+             <style isBold="true">potrebno je priložiti jedno od navedenog osim u slučaju poljoprivrednog zemljišta</style>
+       •    Preslika katastarskog plana
+       •    Suglasnost vlasnika (fizička ili pravna osoba) za prijelaz priključnog voda preko druge parcele ili 
+             javne povrlšine
+       •    Fotokopija jednog računa za potrošenu vodu - <style isBold="true">kod priključenja na građevine javne
+             odvodnje</style>
+       •    Posjedovni list - <style isBold="true">za poljoprivredno zemljište</style>
+       •    Fotokopija osobne iskaznice
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Style_a" x="0" y="288" width="160" height="21" uuid="508d5f8e-1321-46c8-9434-d511ba0ddc1a"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[a) Stambenu građevinu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Style_b" x="190" y="288" width="160" height="21" uuid="2b6d9992-ee4c-418f-a0c6-4a35d66d8116"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[b) Poslovnu građevinu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Style_c" x="380" y="289" width="161" height="21" uuid="5c6dedd8-fe90-4a98-9739-a7f57c4666f8"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[c) Poljoprivrednu građevinu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Style_d" x="0" y="309" width="160" height="21" uuid="1a30178a-ae82-468b-90f8-915d8d72f0b5"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[d) Građevno zemljište]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Style_e" x="190" y="309" width="160" height="21" uuid="97f49210-db3d-4da5-b15c-8ce13e1236de"/>
+				<textElement>
+					<font fontName="ReportFontExtension" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[e) Poljoprivredno zemljište]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,16 @@
+<p-panel>
+    <p-header>
+        <div>
+            <a style="cursor: pointer" routerLink="/welcome"><i class="pi pi-home" style="color: white"></i></a>
+        </div>
+    </p-header>
+    <div class="ui-g" id="mainContent">
+        <div class="ui-g-2 main-menu-div">
+            <rb-main-menu></rb-main-menu>
+        </div>
+        <div class="ui-g-10">
+            <router-outlet></router-outlet>
+            <!-- <rb-connections-review></rb-connections-review> -->
+        </div>
+    </div>
+</p-panel>

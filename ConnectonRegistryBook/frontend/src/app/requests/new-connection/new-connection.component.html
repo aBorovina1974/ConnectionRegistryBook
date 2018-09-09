@@ -1,0 +1,142 @@
+<p-panel>
+  <p-header>
+    <div>
+      {{pageTitle}}
+    </div>
+  </p-header>
+  <form [formGroup]="newConnectionForm">
+    <div class="ui-g">
+      <div class="ui-g-6 ui-g-nopad">
+        <div class="ui-g-12">
+          <p-fieldset legend="Osnovni podaci o zahtjevu">
+            <div class="ui-g">
+              <label class="ui-g-5">Datum podnošenja:</label>
+              <div class="ui-g-7 top-bottom">
+                <p-calendar [showIcon]="true" dateFormat="dd.mm.yy" formControlName="requestDate" readonlyInput="true"></p-calendar>
+                <rb-validation-messages [form]="newConnectionForm" control="requestDate"></rb-validation-messages>
+              </div>
+            </div>
+            <div class="ui-g">
+              <label class="ui-g-5">Svrha podnošenja:</label>
+              <div class="ui-g-7 top-bottom">
+                <p-dropdown [options]="requestPurposes" placeholder="Odaberi opciju" optionLabel="name" [autoWidth]="false" formControlName="requestPurpose"></p-dropdown>
+                <rb-validation-messages [form]="newConnectionForm" control="requestPurpose"></rb-validation-messages>
+              </div>
+            </div>
+          </p-fieldset>
+        </div>
+        <div class="ui-g-12">
+          <p-fieldset legend="Podaci o podnositelju zahtjeva">
+            <div class="ui-g">
+              <label class="ui-g-5">Ime:</label>
+              <div class="ui-g-7 top-bottom">
+                <input type="text" pInputText formControlName="firstName" />
+                <rb-validation-messages [form]="newConnectionForm" control="firstName"></rb-validation-messages>
+              </div>
+            </div>
+            <div class="ui-g">
+              <label class="ui-g-5">Prezime/Nadimak:</label>
+              <div class="ui-g-7 top-bottom">
+                <input type="text" pInputText formControlName="lastName" />
+                <rb-validation-messages [form]="newConnectionForm" control="lastName"></rb-validation-messages>
+              </div>
+            </div>
+            <div class="ui-g">
+              <label class="ui-g-5">OIB:</label>
+              <div class="ui-g-7 top-bottom">
+                <input type="text" pInputText formControlName="oib" />
+                <rb-validation-messages [form]="newConnectionForm" control="oib"></rb-validation-messages>
+              </div>
+            </div>
+            <div class="ui-g">
+              <label class="ui-g-5">Telefon:</label>
+              <div class="ui-g-7 top-bottom">
+                <input type="text" pInputText formControlName="phone" />
+                <rb-validation-messages [form]="newConnectionForm" control="phone"></rb-validation-messages>
+              </div>
+            </div>
+            <div class="ui-g">
+              <label class="ui-g-5">Email:</label>
+              <div class="ui-g-7 top-bottom">
+                <input type="text" pInputText formControlName="email" />
+                <rb-validation-messages [form]="newConnectionForm" control="email"></rb-validation-messages>
+              </div>
+            </div>
+            <div class="ui-g">
+              <label class="ui-g-2">Adresa:</label>
+              <div class="ui-g-10 top-bottom">
+                <input type="text" pInputText formControlName="submitterAddress" />
+                <rb-validation-messages [form]="newConnectionForm" control="submitterAddress"></rb-validation-messages>
+              </div>
+            </div>
+          </p-fieldset>
+        </div>
+      </div>
+      <div class="ui-g-6 ui-g-nopad">
+        <div class="ui-g-12">
+          <p-fieldset legend="Podaci o mjestu priključenja">
+            <div class="ui-g">
+              <label class="ui-g-5">Katastarska općina:</label>
+              <div class="ui-g-7 top-bottom">
+                <p-dropdown [options]="municipalities" placeholder="Odaberi općinu" optionLabel="name" [autoWidth]="false" formControlName="cadastralMunicipality"></p-dropdown>
+                <rb-validation-messages [form]="newConnectionForm" control="cadastralMunicipality"></rb-validation-messages>
+              </div>
+            </div>
+            <div class="ui-g">
+              <label class="ui-g-5">Mjesto/Predio:</label>
+              <div class="ui-g-7 top-bottom">
+                <input type="text" pInputText formControlName="settlementArea" />
+                <rb-validation-messages [form]="newConnectionForm" control="settlementArea"></rb-validation-messages>
+              </div>
+            </div>
+            <div class="ui-g">
+              <label class="ui-g-5">Katastarska čestica:</label>
+              <div class="ui-g-7 top-bottom">
+                <input type="text" pInputText formControlName="cadastralParcelNo" />
+                <rb-validation-messages [form]="newConnectionForm" control="cadastralParcelNo"></rb-validation-messages>
+              </div>
+            </div>
+            <div class="ui-g">
+              <label class="ui-g-2">Adresa:</label>
+              <div class="ui-g-10 top-bottom">
+                <input type="text" pInputText formControlName="connectionAddress" />
+                <rb-validation-messages [form]="newConnectionForm" control="connectionAddress"></rb-validation-messages>
+              </div>
+            </div>
+          </p-fieldset>
+        </div>
+        <div class="ui-g-12">
+          <p-fieldset legend="Podaci o priključku">
+            <div class="ui-g">
+              <label class="ui-g-5">Matični broj:</label>
+              <div class="ui-g-7 top-bottom">
+                <input type="text" pInputText formControlName="registryBookNo" />
+                <rb-validation-messages [form]="newConnectionForm" control="registryBookNo"></rb-validation-messages>
+              </div>
+            </div>
+            <div class="ui-g">
+              <label class="ui-g-5">Namjena priključka:</label>
+              <div class="ui-g-7 top-bottom">
+                <p-dropdown [options]="connectionPurposes" placeholder="Odaberi opciju" optionLabel="name" [autoWidth]="false" formControlName="connectionPurpose"></p-dropdown>
+                <rb-validation-messages [form]="newConnectionForm" control="connectionPurpose"></rb-validation-messages>
+              </div>
+            </div>
+            <div class="ui-g">
+              <label class="ui-g-4">Vrsta odobrenja:</label>
+              <div class="ui-g-8 top-bottom">
+                <p-dropdown [options]="connectionCategories" placeholder="Odaberi opciju" optionLabel="name" [autoWidth]="false" formControlName="connectionCategory"></p-dropdown>
+                <rb-validation-messages [form]="newConnectionForm" control="connectionCategory"></rb-validation-messages>
+              </div>
+            </div>
+          </p-fieldset>
+        </div>
+        <div class="ui-g-12 ui-g-nopad">
+          <p-button class="ui-g-3" icon="pi pi-save" iconPos="right" [disabled]="isFormInvalid() || !newConnectionForm.dirty" (onClick)="saveNewConnectionRequest()" [label]="saveBtnLabel">
+          </p-button>
+          <p-button class="ui-g-5" icon="pi pi-file" iconPos="right" [disabled]="isFormInvalid()" (onClick)="getNewConnectionRequestDocument()" label="Generiraj Dokument">
+          </p-button>
+        </div>
+      </div>
+    </div>
+  </form>
+</p-panel>

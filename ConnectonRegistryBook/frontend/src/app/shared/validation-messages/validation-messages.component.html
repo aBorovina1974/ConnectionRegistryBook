@@ -1,0 +1,8 @@
+<div>
+  <ng-container  *ngIf="controlValidationErrors(controlName)">
+      <i class="fa fa-close" style="margin-right: 4px"></i>
+      <span *ngIf="controlValidationErrors(controlName).required; then msgRequired else msgInvalid"></span>
+  </ng-container>
+  <ng-template #msgRequired>Obavezan unos!</ng-template>
+  <ng-template #msgInvalid>Neispravan unos!</ng-template>
+</div>

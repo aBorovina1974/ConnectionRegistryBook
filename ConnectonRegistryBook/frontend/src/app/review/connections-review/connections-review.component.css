@@ -1,0 +1,11 @@
+:host ::ng-deep .ui-panel-titlebar {
+  font-size: medium;
+  font-weight: bold;
+  color: white; 
+  background: #2399e5;
+} 
+
+th .ui-inputtext {
+  width: 100%;
+  margin-top: 10px;
+}

@@ -1,0 +1,48 @@
+
+:host ::ng-deep .ui-panel-titlebar {
+    font-size: medium;
+    font-weight: bold;
+    color: white; 
+    background: #2399e5;
+} 
+
+:host ::ng-deep .ui-dropdown{
+    width: 100%;
+}
+
+:host ::ng-deep .ui-dropdown .ui-dropdown-trigger {
+    background: #2399e5;
+    color: white;
+    width: 2em;
+}
+
+:host ::ng-deep .ui-calendar {
+    width: 100%;
+}
+
+:host ::ng-deep .ui-calendar .ui-inputtext {
+    width: calc(100% - 2em);
+}
+
+.ui-inputtext {
+    width: 100%;
+}
+
+.ui-fieldset{
+    background: #f8f9fa;
+}
+
+.ui-fieldset-legend{
+    background: #f8f9fa;
+    font-weight: bold;
+}
+
+.ui-panel-content {
+    background: #f8f9fa !important;
+}
+
+.ui-g .top-bottom {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+

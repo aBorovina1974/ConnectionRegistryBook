@@ -1,0 +1,33 @@
+<p-tabView>
+  <p-tabPanel header="Detalji">
+    <div class="ui-g">
+      <p-card title="Opći podaci" class="ui-g-4">
+        <hr>
+        <h4>{{'Matični broj priključka: ' + connectionDetails.registryBookNo}}</h4>
+        <h4>{{'Ime i prezime vlasnika: ' + connectionDetails.requestForm.submitter.fullName}}</h4>
+        <h4>{{'Oib vlasnika: ' + connectionDetails.requestForm.submitter.oib}}</h4>
+        <h4>{{'Adresa priključka: ' + connectionDetails.address}}</h4>
+        <h4>{{'Katastarska općina: ' + connectionDetails.cadastralMunicipality.name}}</h4>
+        <h4>{{'Katastarska čestica: ' + connectionDetails.cadastralParcelNo}}</h4>
+        <h4>{{'Predio: ' + connectionDetails.settlementArea}}</h4>
+      </p-card>
+      <p-card title="Vodoopskrba" class="ui-g-4">
+        <hr>
+        <h4>Datum priključenja:</h4>
+        <h4>Profil vodomjera:</h4>
+      </p-card>
+      <p-card title="Odvodnja" class="ui-g-4">
+        <hr>
+        <h3 *ngIf="connectionDetails.hasDrainage == false; else elseBlock">Nema priključka na javnu odvodnju</h3>
+        <ng-template #elseBlock>
+          <h4>Datum priključenja:</h4>
+          <h4>Ugrađena pumpa:</h4>
+          <h4>Ugrađen pročišćivač:</h4>
+        </ng-template>
+      </p-card>
+    </div>
+  </p-tabPanel>
+  <p-tabPanel header="Povijest">
+
+  </p-tabPanel>
+</p-tabView>

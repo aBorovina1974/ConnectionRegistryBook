@@ -1,0 +1,22 @@
+  :host ::ng-deep .ui-tabview {
+    border: 1px solid lightgray;
+    height: 100%;
+    padding: 0;
+  }
+
+  :host ::ng-deep .ui-tabview-nav {
+    background: #2399e5;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    height: 2.7em;
+  }
+
+  :host ::ng-deep .ui-tabview-panel {
+    margin-left: 3px;
+    height: calc(100% - 2.7em);
+  }
+
+  /* :host ::ng-deep .ui-tabview-panel {
+      border: 1px solid lightgray;
+      
+  } */
