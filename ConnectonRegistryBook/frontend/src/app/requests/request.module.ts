@@ -13,6 +13,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { SharedModule } from '../shared/shared.module';
 import { RequestsRoutingModule } from './requests-routing.module';
+import {ToastModule} from 'primeng/toast';
+
+
 
 
 
@@ -31,7 +34,8 @@ import { RequestsRoutingModule } from './requests-routing.module';
     CalendarModule,
     DropdownModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    ToastModule
   ],
   declarations: [
     NewConnectionComponent

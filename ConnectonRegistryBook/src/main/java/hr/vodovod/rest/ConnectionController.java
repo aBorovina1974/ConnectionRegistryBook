@@ -2,6 +2,7 @@ package hr.vodovod.rest;
 
 import java.util.List;
 import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import hr.vodovod.exception.ConstraintException;
 import hr.vodovod.helper.CollectionResult;
 import hr.vodovod.model.Connection;
 import hr.vodovod.services.ConnectionService;
@@ -25,8 +27,8 @@ public class ConnectionController {
 	private ConnectionService connectionService;
 	
 	@PostMapping("/save")
-	public Connection save(@RequestBody Connection connection) {
-		return connectionService.save(connection);
+	public Connection save(@RequestBody Connection connection) throws ConstraintException {
+		return connectionService.save(connection);	
 	}
 	
 	@GetMapping("/get")

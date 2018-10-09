@@ -8,7 +8,7 @@
     background: #2399e5;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
-    height: 2.7em;
+    height: 2.9em;
   }
 
   :host ::ng-deep .ui-tabview-panel {

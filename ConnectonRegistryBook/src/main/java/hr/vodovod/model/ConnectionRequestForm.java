@@ -2,7 +2,6 @@ package hr.vodovod.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,11 +36,11 @@ public class ConnectionRequestForm implements Serializable {
 	@JoinColumn(name="submitter", referencedColumnName="id")
 	private Person submitter;
 	
-	@ManyToOne(cascade=CascadeType.DETACH)
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="request_type", referencedColumnName="id")
 	private RequestType requestType;
 	
-	@ManyToOne(cascade=CascadeType.DETACH)
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="request_purpose", referencedColumnName="id")
 	private RequestPurpose requestPurpose;
 	

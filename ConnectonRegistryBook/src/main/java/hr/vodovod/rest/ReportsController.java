@@ -45,7 +45,7 @@ public class ReportsController {
 	    reportParams.put("connectionPurpose", datasourceParams.get("connectionPurpose"));
 	    reportParams.put("connectionCategory", datasourceParams.get("connectionCategory"));
 		try {
-			jasperReport = JasperCompileManager.compileReport("C:\\Users\\Ante\\Documents\\workspace-sts-3.9.4.RELEASE\\ConnectonRegistryBook\\src\\main\\resources\\reports\\Blank_A4.jrxml");
+			jasperReport = JasperCompileManager.compileReport("C:\\Users\\Ante\\git\\ConnectionRegistryBook\\ConnectonRegistryBook\\src\\main\\resources\\reports\\Blank_A4.jrxml");
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, reportParams, datasource);
 			bytes = JasperExportManager.exportReportToPdf(jasperPrint);
 		} catch (JRException e) {

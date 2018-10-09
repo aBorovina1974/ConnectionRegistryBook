@@ -3,12 +3,13 @@ package hr.vodovod.services;
 import java.util.List;
 import java.util.Map;
 
+import hr.vodovod.exception.ConstraintException;
 import hr.vodovod.helper.CollectionResult;
 import hr.vodovod.model.Connection;
 
 public interface ConnectionService{
 	
-	Connection save(Connection connection);
+	Connection save(Connection connection) throws ConstraintException;
 	
 	Connection getOne(Integer id);
 	

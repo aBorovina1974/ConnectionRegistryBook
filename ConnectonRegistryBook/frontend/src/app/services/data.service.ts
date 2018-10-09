@@ -9,6 +9,7 @@ import { Connection } from '../model/connection';
 import { LazyLoadEvent } from 'primeng/primeng';
 import { CollectionResult } from '../helper/collection-result';
 import { ConnectionRequestForm } from '../model/connection-request-form';
+import { Person } from '../model/person';
 
 @Injectable({
   providedIn: 'root'
@@ -91,6 +92,12 @@ export class DataService {
   getConnectionByRequestId(requestId: number): Observable<Connection> {
     return this.http.get<Connection>(
       `http://localhost:8080/ConnectionRegistryBook/connection/request/${requestId}`
+    );
+  }
+
+  getPersonByOib(oib: string): Observable<Person> {
+    return this.http.get<Person>(
+      `http://localhost:8080/ConnectionRegistryBook/person/${oib}`
     );
   }
 }

@@ -1,15 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RequestModule } from './requests/request.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReviewModule } from './review/review.module';
-//import { GlobalErrorHandlerService } from './services/global-error-handler.service';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { MainMenuComponent } from './main-menu/main-menu.component';
-import { PanelModule }  from 'primeng/panel';
+import { PanelModule } from 'primeng/panel';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpErrorInterceptor } from './services/http-error-interceptor';
+import { MessageService } from 'primeng/api';
+
+
 
 
 @NgModule({
@@ -27,10 +30,14 @@ import { AppRoutingModule } from './app-routing.module';
     PanelMenuModule,
     PanelModule
   ],
-  // providers: [{
-  //   provide: ErrorHandler,
-  //   useClass: GlobalErrorHandlerService
-  // }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, 
+      useClass: HttpErrorInterceptor,
+      multi: true
+    },
+    MessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

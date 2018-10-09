@@ -4,11 +4,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
+import hr.vodovod.exception.ConstraintException;
 import hr.vodovod.helper.CollectionResult;
 import hr.vodovod.jpa.repositories.ConnectionRepository;
 import hr.vodovod.model.Connection;
@@ -23,8 +27,36 @@ public class ConnectionServiceImpl implements ConnectionService {
 	private EntityManager entityManager;
 
 	@Override
-	public Connection save(Connection connection) {
-		return connectionRepository.save(connection);
+	@Transactional(rollbackOn=ConstraintException.class)
+	public Connection save(Connection connection) throws ConstraintException{
+		Connection conn = null;
+		try
+		{
+			//conn = connectionRepository.save(connection);
+			conn = entityManager.merge(connection);
+			
+		}
+		catch(PersistenceException ex)
+		{	
+			Throwable th = ex.getCause();
+			if(th instanceof ConstraintViolationException)
+			{
+				if(((ConstraintViolationException)th).getConstraintName().contains("REGISTRY_BOOK_MUNICIPALITY_UNIQUE"))
+				{
+					throw new ConstraintException(
+					"Matièni broj prikljuèka: " + connection.getRegistryBookNo() +
+					" veæ se koristi u matiènoj knjizi prikljuèaka za opæinu " +
+					connection.getCadastralMunicipality().getName());
+				}
+				else if(((ConstraintViolationException)th).getConstraintName().contains("OIB_UNIQUE"))
+				{
+					throw new ConstraintException("Oib: " + 
+				    connection.getRequestForm().getSubmitter().getOib() +
+				    " se veæ koristi!");
+				}
+			}
+		}
+		return conn;
 	}
 	
 	@Override

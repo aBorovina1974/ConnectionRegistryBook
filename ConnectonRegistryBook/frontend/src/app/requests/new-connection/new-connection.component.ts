@@ -11,6 +11,8 @@ import { ConnectionRequestForm } from '../../model/connection-request-form';
 import { Status } from '../../model/status';
 import { RequestType } from '../../model/request-type';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MessageService } from 'primeng/api';
+
 
 
 @Component({
@@ -32,7 +34,8 @@ export class NewConnectionComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private dataService: DataService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
@@ -53,7 +56,7 @@ export class NewConnectionComponent implements OnInit {
       connectionCategory: ['', Validators.required],
       registryBookNo: ['', Validators.required]
     });
-    if(this.route.snapshot.data['requestData'] != null){
+    if (this.route.snapshot.data['requestData'] != null) {
       this.getExistingRequestData(this.route.snapshot.data['requestData']);
       this.retreivedConnection = this.route.snapshot.data['requestData'];
     }
@@ -138,43 +141,73 @@ export class NewConnectionComponent implements OnInit {
   }
 
   saveNewConnectionRequest() {
-    if(this.retreivedConnection) {
+
+    if (this.retreivedConnection) {
       this.updateNewConnectionRequest(this.retreivedConnection);
     }
-    else{
-      this.dataService.saveNewConnectionRequest(this.getUserData())
-      .subscribe(
-        (data: Connection) => {
-          if (data) {
-            console.log(data);
-            alert(`Zahtjev za novi priključak podnositelja
-                  ${data.requestForm.submitter.fullName}
-                  uspješno je spremljen`);
+    else {
+      let connection: Connection = this.getUserData();
+      this.dataService.getPersonByOib(connection.requestForm.submitter.oib)
+        .subscribe(
+          (data: Person) => {
+            if (data != null && data != undefined) {
+              if (connection.requestForm.submitter.name === data.name &&
+                connection.requestForm.submitter.surnameNickname === data.surnameNickname &&
+                connection.requestForm.submitter.oib === data.oib &&
+                connection.requestForm.submitter.phone === data.phone &&
+                connection.requestForm.submitter.email === data.email &&
+                connection.requestForm.submitter.address === data.address
+              ) 
+              {
+                connection.requestForm.submitter = data;
+              }
+            }
+          },
+          (err: Error) => this.messageService.add(
+            { severity: 'error', summary: 'Greška! ', detail: err.message, sticky: true }
+          ), 
+          () => {
+            this.dataService.saveNewConnectionRequest(connection)
+              .subscribe(
+                (data: Connection) => {
+                  if (data) {
+                    this.messageService.add(
+                      {
+                        severity: 'success',
+                        detail: `Zahtjev za novi priključak podnositelja: 
+                       ${data.requestForm.submitter.fullName}
+                       uspješno je spremljen!`,
+                        sticky: true
+                      }
+                    );
+                  }
+                },
+                (err: Error) => this.messageService.add(
+                  { severity: 'error', summary: 'Greška! ', detail: err.message, sticky: true }
+                ),
+                () => this.resetForm()
+              );
           }
-        },
-        (err: Error) => console.log(err),
-        () => this.resetForm()
-      );
+        );
     }
   }
 
   getNewConnectionRequestDocument(): void {
-    if(this.retreivedConnection) {
+    if (this.retreivedConnection) {
       this.router.navigate(['/report', this.retreivedConnection.id])
     }
-    else
-    {
+    else {
       this.dataService.saveNewConnectionRequest(this.getUserData())
-      .subscribe(
-        (data: Connection) => this.router.navigate(['/report', data.id]),
-        (err: Error) => console.log(err)
-      );
+        .subscribe(
+          (data: Connection) => this.router.navigate(['/report', data.id]),
+          (err: Error) => alert(err)
+        );
     }
   }
 
   getExistingRequestData(connection: Connection) {
     this.newConnectionForm.setValue({
-      requestDate: new Date(connection.requestForm.submissionDate),    
+      requestDate: new Date(connection.requestForm.submissionDate),
       requestPurpose: connection.requestForm.requestPurpose,
       firstName: connection.requestForm.submitter.name,
       lastName: connection.requestForm.submitter.surnameNickname,
@@ -198,7 +231,7 @@ export class NewConnectionComponent implements OnInit {
     connection.requestForm.requestPurpose = this.newConnectionForm.get('requestPurpose').value;
     connection.requestForm.submitter.name = this.newConnectionForm.get('firstName').value;
     connection.requestForm.submitter.surnameNickname = this.newConnectionForm.get('lastName').value;
-    connection.requestForm.submitter.oib  = this.newConnectionForm.get('oib').value;
+    connection.requestForm.submitter.oib = this.newConnectionForm.get('oib').value;
     connection.requestForm.submitter.phone = this.newConnectionForm.get('phone').value;
     connection.requestForm.submitter.email = this.newConnectionForm.get('email').value;
     connection.requestForm.submitter.address = this.newConnectionForm.get('submitterAddress').value;
@@ -209,27 +242,28 @@ export class NewConnectionComponent implements OnInit {
     connection.registryBookNo = this.newConnectionForm.get('registryBookNo').value;
     connection.connectionPurpose = this.newConnectionForm.get('connectionPurpose').value;
     connection.connectionCategory = this.newConnectionForm.get('connectionCategory').value;
-    
+
     if (this.newConnectionForm.get('requestPurpose').value.name === 'vodoopskrba i odvodnja' ||
-    this.newConnectionForm.get('requestPurpose').value.name === 'odvodnja')
-    {
+      this.newConnectionForm.get('requestPurpose').value.name === 'odvodnja') {
       connection.hasDrainage = true;
     }
     else {
       connection.hasDrainage = false;
     }
     this.dataService.saveNewConnectionRequest(connection)
-    .subscribe(
-      (data: Connection) => {
-        if(data) {
-          alert(`Zahtjev za novi priključak podnositelja 
+      .subscribe(
+        (data: Connection) => {
+          if (data) {
+            alert(`Zahtjev za novi priključak podnositelja 
                 ${data.requestForm.submitter.fullName}
                 uspješno izmjenjen.`);
-        }
-      },
-      (err: Error) => console.log(err),
-      () => this.router.navigate(['/review/requests'])
-    );
+          }
+        },
+        (err: Error) => this.messageService.add(
+          { severity: 'error', summary: 'Greška! ', detail: err.message, sticky: true }
+        ),
+        () => this.router.navigate(['/review/requests'])
+      );
   }
 
   isFormInvalid(): boolean {
